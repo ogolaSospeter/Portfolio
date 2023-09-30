@@ -39,6 +39,6 @@ def send_email():
     # Send email
     mail.send(msg)
 
-    return 'Email sent successfully!'
+    return 'The Email sent successfully!'
 
 
