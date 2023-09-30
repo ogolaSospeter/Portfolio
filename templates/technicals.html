@@ -1,0 +1,126 @@
+<section>
+    <style>
+        .techcard {
+            margin: 5px;
+            width: 350px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transition: 0.5s;
+        }
+        
+        .techcard:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(1, 102, 117, 0.5);
+            color: rgb(6, 170, 161);
+        }
+        
+        .technicalcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+
+    <div class="section" id="technical">
+        <div class="container my-2">
+            <div class="h4 text-center mb-4 title" id="technical-info">
+                Technical Skills
+            </div>
+
+            <div id="technical-container" class="technicalcontainer">
+                <!-- Cards will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Fetch technical skills data from the API endpoint
+        $.ajax({
+            url: '/technicalskills',
+            method: 'GET',
+            success: function(data) {
+                // Update HTML content with fetched data
+                const technicalContainer = $('#technical-container');
+
+                data.forEach(function(skillCategory) {
+                    const card = $('<div class="techcard" data-aos="fade-up" data-aos-anchor-placement="top-bottom">');
+                    const cardBody = $('<div class="card-body">');
+
+                    // Populate card content
+                    cardBody.append(`<div class="h5">${skillCategory.name}</div>`);
+
+                    // Populate skill descriptions
+                    if (skillCategory.decs && skillCategory.decs.length > 0) {
+                        const skillList = $('<ul>');
+                        skillCategory.decs.forEach(function(skill) {
+                            const listItem = $('<li>').html(`${skill.name}`);
+                            skillList.append(listItem);
+                        });
+                        cardBody.append(`<p><b>Skills:</b><br>${skillList.html()}</p>`);
+                    }
+
+                    card.append(cardBody);
+                    technicalContainer.append(card);
+                });
+            },
+            error: function(err) {
+                console.error('Error fetching technical skills data:', err);
+            }
+        });
+    </script>
+
+    <!-- 
+    <div class="section" id="technical">
+        <div class="container my-2">
+            <div class="h4 text-center mb-4 title" id="technical-info">
+                Technical Skills
+            </div>
+
+            <div id="technical-container" class="technicalcontainer">
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $.ajax({
+            url: '/technicalskills/',
+            method: 'GET',
+            success: function(data) {
+                const technicalContainer = $('#technical-container');
+
+                data.forEach(function(technical) {
+                    const card = $('<div class="techcard" data-aos="fade-up" data-aos-anchor-placement="top-bottom">');
+                    const cardBody = $('<div class="card-body">');
+
+                    // Populate card content
+                    cardBody.append(`<div class="h5">${technical.levelTitle}</div>`);
+                    cardBody.append(`<p class="category">${technical.institution}</p>`);
+                    cardBody.append(`<p>${technical.year}</p>`);
+
+                    // Populate projects
+                    if (technical.projects && technical.projects.length > 0) {
+                        const projectsList = $('<ul>');
+                        technical.projects.forEach(function(project) {
+                            const listItem = $('<li>').html(`${project.name}<i>${project.description}</i>`);
+                            projectsList.append(listItem);
+                        });
+                        cardBody.append(`<p><b>Projects:</b><br>${projectsList.html()}</p>`);
+                    }
+
+                    card.append(cardBody);
+                    technicalContainer.append(card);
+                });
+            },
+            error: function(err) {
+                console.error('Error fetching technical data:', err);
+            }
+        });
+    </script> -->
+</section>

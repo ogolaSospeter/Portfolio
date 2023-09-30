@@ -1,0 +1,77 @@
+<section>
+
+    <style>
+        .educationcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .educard {
+            margin: 5px;
+            width: 520px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transition: 0.5s;
+            text-align: center;
+        }
+    </style>
+
+    <div class="section" id="skill">
+        <div class="container my-2">
+            <div class="h4 text-center mb-4 title" id="educational-info">
+                Education
+            </div>
+
+            <div id="education-container" class="educationcontainer">
+                <!-- Cards will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        // Fetch education data from the API endpoint
+        $.ajax({
+            url: '/education/',
+            method: 'GET',
+            success: function(data) {
+                // Update HTML content with fetched data
+                const educationContainer = $('#education-container');
+
+                data.forEach(function(education) {
+                    const card = $('<div class="educard" data-aos="fade-up" data-aos-anchor-placement="top-bottom">');
+                    const cardBody = $('<div class="card-body">');
+
+                    // Populate card content
+                    cardBody.append(`<div class="h5">${education.levelTitle}</div>`);
+                    cardBody.append(`<p class="category">${education.institution}</p>`);
+                    cardBody.append(`<p>${education.year}</p>`);
+
+                    // Populate projects
+                    if (education.projects && education.projects.length > 0) {
+                        const projectsList = $('<ul>');
+                        education.projects.forEach(function(project) {
+                            const listItem = $('<li>').html(`${project.name}<i>${project.description}</i>`);
+                            projectsList.append(listItem);
+                        });
+                        cardBody.append(`<p><b>Projects:</b><br>${projectsList.html()}</p>`);
+                    }
+
+                    card.append(cardBody);
+                    educationContainer.append(card);
+                });
+            },
+            error: function(err) {
+                console.error('Error fetching education data:', err);
+            }
+        });
+    </script>
+</section>
