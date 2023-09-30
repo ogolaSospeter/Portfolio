@@ -21,6 +21,10 @@
     /* Add other styles as needed */
 }
 
+.main {
+    background-color: rgb(1, 43, 43);
+}
+
 .aboutsection {
     background-color: rgb(1, 43, 43);
 }
@@ -151,4 +155,13 @@ section .section-title {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+}
+
+.divsection {
+    background-color: bisque;
+    height: 100%;
+    width: 100%;
+    padding: 2px;
+    margin: 2px;
+    border: 2px;
 }

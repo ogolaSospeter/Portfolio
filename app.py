@@ -79,6 +79,14 @@ def educationData():
             'projects': [
                 {'name': 'ALX Africa', 'description': 'ALX Africa'},
             ]
+        },
+        {
+            'levelTitle': "Other Certifications",
+            'institution': 'Microsoft Learn',
+            'year': 'May - July,2023',
+            'projects': [
+                {'name': 'Microsoft Learn', 'description': 'Microsoft Learn'},
+            ]
         }
     ]
 
