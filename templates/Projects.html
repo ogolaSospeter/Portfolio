@@ -1,17 +1,30 @@
-<section id="projects">
+<section>
     <style>
         .projectcontainer {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
+        
+        .projectcard {
+            margin: 5px;
+            width: 520px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transition: 0.5s;
+            text-align: center;
+        }
     </style>
 
     <div class="section">
         <div class="container my-2">
             <div class="h4 text-center mb-4 title" id="project-info">Projects</div>
-            <div id="project-container" class="projectcontainer"></div>
-            <!-- Projects will be automatically displayed.-->
+            <div id="project-container" class="projectcontainer">
+                <!-- Projects will be automatically displayed.-->
+            </div>
         </div>
     </div>
     <!-- Make sure to include Bootstrap CSS -->
@@ -25,7 +38,7 @@
                 const projectContainer = $('#project-container');
 
                 data.forEach(function(project) {
-                    const card = $('<div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">');
+                    const card = $('<div class="projectcard" data-aos="fade-up" data-aos-anchor-placement="top-bottom">');
                     const cardBody = $('<div class="card-body">');
 
                     // Display image using an img tag

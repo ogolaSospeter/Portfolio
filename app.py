@@ -188,7 +188,7 @@ def frameworks():
     return jsonify(frameData)
 
 @app.route('/projects')
-def projects():
+def projectsViews():
     projectsData = [
         {
             'name': 'In-Person Service Finder',
