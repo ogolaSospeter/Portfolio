@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,12 +20,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/templates/static/styles.css">
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
     <title>Portfolio</title>
 </head>
 
-<body>
+<body style="background-image: -webkit-image-set('https://img.freepik.com/premium-photo/abstract-white-background-with-smooth-lines_476363-1518.jpg?size=626&ext=jpg&uid=R68194178&semt=sph');">
     <!-- Navbar Section -->
     {% include "navbar.html" %}
 
@@ -60,7 +63,7 @@
     <!-- Carousel wrapper -->
 
 
-    <div class="section" id="about">
+    <div class="section" id="milestones">
         <div class="container">
             <div class="card">
                 <div class="card-body">
@@ -81,7 +84,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <div class="h4 mt-0 title">Basic Information</div>
+                    <div class="h4 mt-0 title">Personal Information</div>
                     <div class="row">
                         <div class="col-sm-4">
                             <strong class="text-uppercase">
@@ -156,7 +159,10 @@
     </div>
 
     </div>
+    <!--Page Footer-->
 
+    {% include "footer.html" %}
+    <!--Page Footer-->
 
 
 

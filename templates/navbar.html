@@ -1,28 +1,46 @@
 <section>
-    <nav class="navbar navbar-expand-sm bg-success navbar-light " style="display: flex;position:sticky;justify-content: center; align-content: space-around; flex-direction: row; flex-flow: row; flex: content;">
-        <!-- Brand/logo -->
-        <a class="navbar-brand" href="">
-            <img src="https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?size=626&ext=jpg&uid=R68194178&semt=sph" alt="logo" style="width:40px;height: 40px;  border-radius: 50%;">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse_Navbar">
-	<span class="navbar-toggler-icon"></span>
-	</button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#educational-info">Education</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#Prof-skill">Professional Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#contact-us">Contact Us</a>
-                </li>
-
-            </ul>
-            <a class="navbar-brand" id="navbarText">
-                <img src="https://img.freepik.com/free-photo/html-system-website-concept_23-2150376770.jpg?size=626&ext=jpg&uid=R68194178&semt=sph" alt="avatar" style="width:40px;height: 40px;  border-radius: 50%;" />
-            </a>
-        </div>
+    <style>
+        nav {
+            background-color: #007b5e;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+            color: white;
+            text-decoration-color: white;
+        }
+        
+        nav .navli {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        nav .navli:hover {
+            /* Adjust the scale factor as needed */
+            transform-style: inherit;
+            background-image: -webkit-image-set("https://img.freepik.com/premium-photo/abstract-white-background-with-smooth-lines_476363-1518.jpg?size=626&ext=jpg&uid=R68194178&semt=sph");
+            color: rgb(227, 134, 3);
+        }
+        
+        .nav-itm:hover {
+            color: #feb305;
+        }
+    </style>
+    <nav>
+        <!-- <ul class="navli" style=""> -->
+        <ul class=" navli">
+            <li class="nav-itm"><a href="{{url_for('index')}}">Home</a></li>
+            <li class="nav-itm"><a href="#education">Education</a></li>
+            <li class="nav-itm"><a href="#milestones">Milestones</a></li>
+            <li class="nav-itm"><a href="#languages">Languages</a></li>
+            <li class="nav-itm"><a href="#about">About</a></li>
+            <li class="nav-itm"><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 </section>
