@@ -1,16 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
-from flask_mail import Mail, Message
+from flask_mail import  Message, Mail
 from decouple import config
 
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'my App key'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = config('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = config('MAIL_PASSWORD')
-
 
 app.config['MAIL_DEFAULT_SENDER'] = config('MAIL_USERNAME')
 
@@ -187,3 +186,24 @@ def frameworks():
     ]
 
     return jsonify(frameData)
+
+@app.route('/projects')
+def projects():
+    projectsData = [
+        {
+            'name': 'In-Person Service Finder',
+            'description': 'This is a web application that allows users to find in-person services within their locality. The services include; Hospitals, Schools, Restaurants, Hotels, etc. The application also allows users to rate the services they receive from the service providers.',
+            'image': 'https://github.com/gims-inc/IPSP/blob/master/web_dynamic/static/images/on_phone2.jpeg?raw=true',
+            'link': 'https://github.com/gims-inc/IPSP',
+            'year':'2023'
+        },
+        {
+            'name': 'Customizable Recipe Website',
+            'description': 'This is a web application that allows users to find recipes for their favorite meals. The application also allows users to add their own recipes.',
+            'image': 'https://github.com/ogolaSospeter/WebstackPortfolioProject/raw/main/templates/images/main.jpg',
+            'link': 'https://github.com/ogolaSospeter/WebstackPortfolioProject',
+            'year':'2023'
+        }
+    ]
+
+    return jsonify(projectsData)

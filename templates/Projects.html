@@ -1,0 +1,62 @@
+<section>
+    <style>
+        .projectcontainer {
+            display: flex;
+            flex: 2;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+
+    <div class="section">
+        <div class="container my-2">
+            <div class="h4 text-center mb-4 title" id="project-info">Projects</div>
+            <div id="project-container" class="projectcontainer"></div>
+            <!-- Projects will be automatically displayed.-->
+
+
+        </div>
+    </div>
+
+    <script>
+        $.ajax({
+            url: '/projects/',
+            method: 'GET',
+            success: function(data) {
+                const projectContainer = $('#project-container');
+
+                data.forEach(function(project) {
+                    const card = $('<div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">');
+                    const cardBody = $('<div class="card-body">');
+
+                    // Populate card content
+                    cardBody.append(`<div class="h5">${project.image}</div>`);
+                    cardBody.append(`<div class="h5">${project.name}</div>`);
+                    cardBody.append(`<p class="category">${project.description}</p>`);
+                    cardBody.append(`<p>${project.year}</p>`);
+                    cardBody.append(`<p>${project.link}</p>`);
+
+                    // Populate projects
+                    if (project.projects && project.projects.length > 0) {
+                        const projectsList = $('<ul>');
+                        project.projects.forEach(function(project) {
+                            const listItem = $('<li>').html(`${project.name}<i>${project.description}</i>`);
+                            projectsList.append(listItem);
+                        });
+                        cardBody.append(`<p><b>Projects:</b><br>${projectsList.html()}</p>`);
+                    }
+
+                    card.append(cardBody);
+                    projectContainer.append(card);
+                });
+            },
+            error: function(err) {
+                console.error('Error fetching project data:', err);
+            }
+        })
+    </script>
+
+
+
+
+</section>
