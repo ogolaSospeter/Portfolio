@@ -206,6 +206,16 @@ def projectsViews():
             'image1':'/static/images/main.jpg',
             'link': 'https://github.com/ogolaSospeter/WebstackPortfolioProject',
             'year':'2023'
+        },
+        {
+            'name':'Skyliners Boutique Parlor',
+            'description':'This is an Android Application designed in Kotlin using the MVVM Architecture and the SQLiteDatabase. The application allows users to add, edit and delete their products.',,
+            'image':'https://github.com/ogolaSospeter/SkylineBoutiqueApp/raw/master/Skyline%20Boutique/images/logo.png',
+            'image1':'https://github.com/ogolaSospeter/SkylineBoutiqueApp/raw/master/Skyline%20Boutique/images/home.png',
+            'image2':'https://github.com/ogolaSospeter/SkylineBoutiqueApp/raw/master/Skyline%20Boutique/images/logsuccess.png',
+            'link':'https://github.com/ogolaSospeter/SkylineBoutiqueApp/tree/master',
+            'year':'2023'
+
         }
     ]
 
