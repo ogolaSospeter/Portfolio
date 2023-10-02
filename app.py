@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_mail import  Message, Mail
 from decouple import config
+import sys, os
 
 
 app = Flask(__name__)
@@ -192,15 +193,17 @@ def projectsViews():
     projectsData = [
         {
             'name': 'In-Person Service Finder',
-            'description': 'This is a web application that allows users to find in-person services within their locality. The services include; Hospitals, Schools, Restaurants, Hotels, etc. The application also allows users to rate the services they receive from the service providers.',
+            'description': 'This is a web application that allows users to find in-person services within their locality, allowing users to rate the services they receive from the service providers.',                
             'image': 'https://github.com/gims-inc/IPSP/blob/master/web_dynamic/static/images/on_phone2.jpeg?raw=true',
+            'image1':'/static/images/adminReview.jpg',            
             'link': 'https://github.com/gims-inc/IPSP',
             'year':'2023'
         },
         {
             'name': 'Customizable Recipe Website',
             'description': 'This is a web application that allows users to find recipes for their favorite meals. The application also allows users to add their own recipes.',
-            'image': 'https://github.com/ogolaSospeter/WebstackPortfolioProject/raw/main/templates/images/main.jpg',
+            'image': '/static/images/adminReview.jpg',
+            'image1':'/static/images/main.jpg',
             'link': 'https://github.com/ogolaSospeter/WebstackPortfolioProject',
             'year':'2023'
         }

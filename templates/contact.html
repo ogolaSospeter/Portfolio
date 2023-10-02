@@ -15,7 +15,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="card-body">
-                                            <form id="emailForm" onsubmit="sendEmail(); return false; " method="post">
+                                            <form id="emailForm" action="{{url_for('send_email')}}" method="post">
                                                 <div class="p pb-3">
                                                     <strong>Feel free to contact </strong>
                                                 </div>
@@ -55,11 +55,8 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-
-                                                        <button class="btn btn-primary" type="submit">
-							Send
-							</button>
-
+                                                        <div id="message-container"></div>
+                                                        <button class="btn btn-primary" type="submit" onclick="sendEmail()">Send</button>
 
 
                                                     </div>
@@ -95,29 +92,4 @@
         </div>
     </div>
 
-    <script>
-        function sendEmail() {
-            const form = document.getElementById('emailForm');
-            const formData = new FormData(form);
-
-            fetch('/sendemail/', {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    // Handle success, e.g., show a success message to the user
-                    console.log('Email sent successfully:', data);
-                })
-                .catch(error => {
-                    // Handle errors, e.g., show an error message to the user
-                    console.error('Error sending email:', error);
-                });
-        }
-    </script>
 </section>

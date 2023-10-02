@@ -1,0 +1,136 @@
+<section id="projects">
+    <style>
+        .projectcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 5px;
+        }
+        
+        .projectcard {
+            margin: 5px;
+            width: 560px;
+            height: max-content;
+            border: 10%;
+            background-color: antiquewhite;
+            border-color: rgb(190, 167, 146);
+            border-style: ridge;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transition: 0.5s;
+            text-align: center;
+        }
+        
+        .projectcontainer .div {
+            margin: 10%;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        
+        .projectcontainer div img {
+            width: 250px;
+            height: 200px;
+            padding: 2px;
+            border: 20%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .projectcontainer div img:hover {
+            transform: scale(0.9);
+            box-shadow: 0 0 20px rgba(1, 102, 117, 0.5);
+            color: rgb(4, 75, 88);
+            transform-style: preserve-3d;
+        }
+        
+        .projectcontainer h2,
+        h4 {
+            color: sandybrown;
+            font-family: fantasy;
+            font-size: 20px;
+        }
+    </style>
+
+    <div class="section" id="skill">
+        <div class="h4 text-center mb-4 title" id="project-info" style="text-align: center;">Projects</div>
+        <div id="project-container" class="projectcontainer">
+            <!-- Projects will be automatically displayed.-->
+        </div>
+    </div>
+    <!-- Make sure to include Bootstrap CSS -->
+
+    <script>
+        // Assuming you have the previous JavaScript code here
+
+        const projectsListElement = document.getElementById('project-container');
+
+        fetch('/projects')
+            .then(response => response.json())
+            .then(projectsData => {
+                    projectsData.forEach(project => {
+                                const projectCard = document.createElement('div');
+                                projectCard.classList.add('projectcard');
+                                const images = project.images || [{
+                                    image: project.image
+                                }, {
+                                    image: project.image1
+                                }];
+
+                                projectCard.innerHTML = `
+                        <h2>${project.name}</h2>
+                        <p>${project.description}</p>
+                        <div class="image-container">
+                            ${images.map((img, index) => `<img src="${img.image}" alt="${project.name} ${index + 1}">`).join('')}
+                        </div>
+                        <p><a href="${project.link}" target="_blank">GitHub Link</a></p>
+                        <p>Year: ${project.year}</p>
+                        <hr>
+                    `;
+                    projectsListElement.appendChild(projectCard);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+
+    <!-- <script>
+        $.ajax({
+            url: '/projects/',
+            method: 'GET',
+            success: function(data) {
+                const projectContainer = $('#project-container');
+
+                data.forEach(function(myproject) {
+                    const card = $('<div class="projectcard" data-aos="fade-up" data-aos-anchor-placement="top-bottom">');
+                    const cardBody = $('<div class="card-body">');
+
+                    // Display image using an img tag
+                    cardBody.append(`<p><img class=" img-fluid" src="${myproject.image}" alt="${myproject.name}"></p>`);
+                    cardBody.append(`<div class="h5">${myproject.name}</div>`);
+                    cardBody.append(`<p class="category">${myproject.description}</p>`);
+                    cardBody.append(`<p>${myproject.year}</p>`);
+
+                    // Display link using an a tag
+                    cardBody.append(`<p><a href="${myproject.link}" target="_blank">Visit Project</a></p>`);
+
+                    // Populate projects
+                    if (myproject.projects && myproject.projects.length > 0) {
+                        const projectsList = $('<ul>');
+                        myproject.projects.forEach(function(project) {
+                            const listItem = $('<li>').html(`${project.name}<i>${project.description}</i>`);
+                            projectsList.append(listItem);
+                        });
+                        cardBody.append(`<p><b>Projects:</b><br>${projectsList.html()}</p>`);
+                    }
+
+                    card.append(cardBody);
+                    projectContainer.append(card);
+                });
+            },
+            error: function(err) {
+                os.write(err);
+                console.error('Error fetching project data:', err);
+            }
+        })
+    </script> -->
+</section>
