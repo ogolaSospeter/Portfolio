@@ -39,7 +39,7 @@ def send_email():
     # Send email
     mail.send(msg)
 
-    return 'The Email sent successfully!'
+    return jsonify
 
 
 #Create an education details API for my portfolio
@@ -47,7 +47,7 @@ def send_email():
 
 def educationData():
     data = [
-        {
+    {
         'levelTitle': "Bachelor's Computer Technology",
         'institution': 'JOMO KENYATTA UNIVERSITY of AGRICULTURE and TECHNOLOGY.',
         'year': '2021 - Current',
@@ -55,7 +55,7 @@ def educationData():
             {'name': 'In-Person Service Finder', 'description': 'ALX-SE Team Project'},
             {'name': 'Customizable Recipe Website', 'description': 'ALX-SE Solo Project'},
         ]
-        },
+    },
         {
             'levelTitle': "Kenya Certificate of Secondary Education",
             'institution': 'HomaBay High School',
